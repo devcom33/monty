@@ -16,12 +16,12 @@ int main(void)
 	{
 		if(strcmp(opcode, "push") == 0)
 		{
-			fscanf(file, "%d", &val);
+			fscanf(file, "%d$", &val);
 			push(val);
 		}
-		else if(strcmp(opcode, "pop") == 0)
+		else if(strcmp(opcode, "pop$") == 0)
 			pop();
-		else if(strcmp(opcode, "pall") == 0)
+		else if(strcmp(opcode, "pall$") == 0)
 			display();
 		else
 			printf(": Invalid opcode : \n");
