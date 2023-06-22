@@ -10,7 +10,7 @@ void push(int data)
 
 	if (tmp == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	tmp->n = data;

@@ -33,7 +33,7 @@ typedef struct instruction_s
 } instruction_t;
 
 void push(int data);
-void pop();
-void display();
+void pop(void);
+void display(void);
 int main(int argc, char **argv);
 #endif
