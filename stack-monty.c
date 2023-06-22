@@ -23,7 +23,7 @@ void push(int data)
 /**
  * pop - delete element
  */
-void pop()
+void pop(void)
 {
 	stack_t *p = top;
 
@@ -43,7 +43,7 @@ void pop()
 /**
  * display - function that display elements
  */
-void display()
+void display(void)
 {
 	stack_t *current = top;
 

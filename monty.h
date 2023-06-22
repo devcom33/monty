@@ -2,6 +2,8 @@
 #define MONTY_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,5 +37,6 @@ typedef struct instruction_s
 void push(int data);
 void pop(void);
 void display(void);
+void trimSpaces(char* str);
 int main(int argc, char **argv);
 #endif

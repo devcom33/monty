@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 	while(fscanf(file, "%s", opcode) == 1)
 	{
 		l++;
+		trimSpaces(opcode);
 		if(strcmp(opcode, "push") == 0)
 		{
 			fscanf(file, "%s$", val);
