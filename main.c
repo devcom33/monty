@@ -1,19 +1,27 @@
 #include "monty.h"
 #include <ctype.h>
 #include <string.h>
+#define MAX_LENGTH 100
 /**
  * main - ...
  */
 int main(int argc, char **argv)
 {
-	FILE* file = fopen(argv[1], "r");
+	FILE* file;
 	char opcode[5];
-	int val, l = 0;
+	int l = 0, i = 0;
+	char val[MAX_LENGTH];
 
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
-		printf("Error: Can't open file <%s>\n", argv[1]);
-		exit(0);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 
 	while(fscanf(file, "%s", opcode) == 1)
@@ -21,14 +29,16 @@ int main(int argc, char **argv)
 		l++;
 		if(strcmp(opcode, "push") == 0)
 		{
-			fscanf(file, "%d$", &val);
-			if (isdigit(val))
-				push(val);
-			else
+			fscanf(file, "%s$", val);
+			for (i = 0; val[i] != '$'; i++)
 			{
-				printf("L<%d>: usage: push integer\n", l);
-				exit(EXIT_FAILURE);
+				if (!isdigit(val[i]))
+				{
+					fprintf(stderr, "L%d: usage: push integer\n", l);
+					exit(EXIT_FAILURE);
+				}
 			}
+			push(atoi(val));
 		}
 		else if(strcmp(opcode, "pop$") == 0)
 			pop();
@@ -36,10 +46,9 @@ int main(int argc, char **argv)
 			display();
 		else
 		{
-			printf("L<%d>: unknown instruction <opcode>\n", l);
+			fprintf(stderr, "L%d: unknown instruction %s\n", l, opcode);
 			exit(EXIT_FAILURE);
 		}
 	}
-	(void)argc;
 	return (0);
 }
