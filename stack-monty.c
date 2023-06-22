@@ -10,10 +10,9 @@ void push(int data)
 
 	if (tmp == NULL)
 	{
-		printf("Stack Overflow\n");
+		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	/*printf("***%d\n",data);*/
 	tmp->n = data;
 	tmp->prev = NULL;
 	tmp->next = top;
