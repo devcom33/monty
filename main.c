@@ -30,8 +30,8 @@ int main(int argc, char **argv)
 		trimSpaces(opcode);
 		if(strcmp(opcode, "push") == 0)
 		{
-			fscanf(file, "%s$", val);
-			for (i = 0; val[i] != '$'; i++)
+			fscanf(file, "%s", val);
+			for (i = 0; val[i] != '$' && val[i] != '\0'; i++)
 			{
 				if (!isdigit(val[i]))
 				{
