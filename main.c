@@ -41,9 +41,9 @@ int main(int argc, char **argv)
 			}
 			push(atoi(val));
 		}
-		else if(strcmp(opcode, "pop$") == 0)
+		else if(strcmp(opcode, "pop") == 0)
 			pop();
-		else if(strcmp(opcode, "pall$") == 0)
+		else if(strcmp(opcode, "pall") == 0)
 			display();
 		else
 		{
